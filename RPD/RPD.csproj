@@ -224,6 +224,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\RPDContext.cs" />
     <Compile Include="DAL\RPDRepository.cs" />
+    <Compile Include="Extensions\FlowMetadata.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

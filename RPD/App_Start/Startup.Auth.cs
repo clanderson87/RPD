@@ -1,4 +1,8 @@
 ﻿using System;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Calendar.v3;
+using Google.Apis.Services;
+using Google.Apis.Util.Store;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -57,12 +61,16 @@ namespace RPD
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
-
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            string scopes = CalendarService.Scope.Calendar;
+            
+            var options = new GoogleOAuth2AuthenticationOptions
             {
                 ClientId = "924207721083-ml5b665amj85lakklupikqurgrbaqatd.apps.googleusercontent.com",
                 ClientSecret = "9tdM-hWOxrTFKT7nZkUQCVLt"
-            });
+            };
+            options.Scope.Add(scopes);
+
+            app.UseGoogleAuthentication(options);
         }
     }
 }
